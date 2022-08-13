@@ -17,12 +17,13 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 $router->get('/key', function() {
-    return \Illuminate\Support\Str::random(32);
+    $he =\Illuminate\Support\Str::random(32);
+    $key = uniqid(true).''.$he;
+    return $key;
 });
 $router->POST('/media','MediaController@create');
 $router->GET('/media','MediaController@getAll');
 $router->GET('/media/{id}','MediaController@getById');
 $router->POST('/media/app','MediaController@getByApp');
 $router->POST('/media/data','MediaController@getByData');
-$router->POST('/media/test','MediaController@test');
 $router->DELETE('/media/{id}','MediaController@destroy');

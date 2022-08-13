@@ -15,7 +15,7 @@ class Media extends Migration
     {
         Schema::create('service-media', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('images');
+            $table->string('images')->unique();
             $table->string('app');
             $table->string('type');
             $table->integer('iddata')->nullable();
