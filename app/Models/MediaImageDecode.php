@@ -4,11 +4,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Media extends Model
+class MediaImageDecode extends Model
 {
-    protected $table = 'ServiceMedia';
+    protected $table = 'ServiceMediaImageDecode';
     protected $fillable = [
-        'images','app','type','iddata'
+        'status','idmedia','uniqkey','isDecode'
     ];
     protected $hidden = ['rowstatus'];
 }

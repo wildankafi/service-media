@@ -14,16 +14,19 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    // return $router->app->version();
+    return view('index');
 });
-$router->get('/key', function() {
-    $he =\Illuminate\Support\Str::random(32);
-    $key = uniqid(true).''.$he;
-    return $key;
-});
+// $router->get('/key', function() {
+//     $he =\Illuminate\Support\Str::random(32);
+//     $key = uniqid(true).''.$he;
+//     return $key;
+// });
 $router->POST('/media','MediaController@create');
 $router->GET('/media','MediaController@getAll');
 $router->GET('/media/{id}','MediaController@getById');
 $router->POST('/media/app','MediaController@getByApp');
 $router->POST('/media/data','MediaController@getByData');
 $router->DELETE('/media/{id}','MediaController@destroy');
+
+require __DIR__.'/version/v1.php';

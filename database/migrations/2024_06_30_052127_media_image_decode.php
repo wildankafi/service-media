@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Media extends Migration
+class MediaImageDecode extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class Media extends Migration
      */
     public function up()
     {
-        Schema::create('ServiceMedia', function (Blueprint $table) {
+        Schema::create('ServiceMediaImageDecode', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('images')->unique();
-            $table->string('app');
-            $table->string('type');
-            $table->integer('iddata')->nullable();
+            $table->string('uniqkey'); 
+            $table->string('isDecode')->default(0);
+            $table->string('status')->nullable();
+            $table->string('idmedia')->nullable();
             $table->boolean('rowstatus')->default(0);
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class Media extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ServiceMedia');
+        Schema::dropIfExists('ServiceMediaImageDecode');
     }
 }
