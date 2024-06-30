@@ -25,11 +25,12 @@ class MediaImgController extends Controller
         $parametre =$request->all();
         $image = $request->file('image');
         $imageData = file_get_contents($image->getRealPath());
-        $mimeType = mime_content_type($image->getRealPath());
+        $mimeType = $image->getClientmimeType();
+        dd($mimeType);
+        // dd($mimeType);
         // Encode image data with base64 encoding
         if ($imageData !== false && $mimeType !== false) {
             $base64Image = base64_encode($imageData);
-
             $strrandom =\Illuminate\Support\Str::random(32);
             $uniqid = uniqid().''.$strrandom;
             $mediaimage = New MediaImage();
