@@ -22,15 +22,14 @@ class MediaImgController extends Controller
         //
     }
     public function create(Request $request) {
-        $parametre =$request->all();
         $image = $request->file('image');
         $imageData = file_get_contents($image->getRealPath());
         $mimeType = $image->getClientmimeType();
         dd($mimeType);
-        // dd($mimeType);
         // Encode image data with base64 encoding
         if ($imageData !== false && $mimeType !== false) {
             $base64Image = base64_encode($imageData);
+            // dd($base64Image);
             $strrandom =\Illuminate\Support\Str::random(32);
             $uniqid = uniqid().''.$strrandom;
             $mediaimage = New MediaImage();
@@ -143,6 +142,7 @@ class MediaImgController extends Controller
             "media" => "required"
         ]);
         // $img = $request->media;
+        dd(base64_decode($request->media));
         $imagebase64 = explode(";base64,", $request->media);
         $strrandom =\Illuminate\Support\Str::random(32);
         $uniqid = uniqid().''.$strrandom;

@@ -30,3 +30,4 @@ $router->POST('/media/data','MediaController@getByData');
 $router->DELETE('/media/{id}','MediaController@destroy');
 
 require __DIR__.'/version/v1.php';
+require __DIR__.'/version/v2.php';
